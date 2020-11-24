@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test Symfony{% endblock %}
+
+{% block body %}
+
+
+
+<section>
+    <div class="uk-container uk-container-medium">
+        <h1 class="uk-h1">Login</h1>
+
+        {% if error %}
+        <div class="uk-alert-danger" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p>{{ error.message|trans(error.messageData, 'security') }}</p>
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{{path('login')}}" class="uk-form-stacked">
+            <div class="uk-margin">
+                <label for="inputEmail" class="uk-form-label">Email address</label>
+                <input type="email" name="_email" id="inputEmail" class="uk-input uk-width-1-2" placeholder="Email address" required autofocus>
+            </div>
+            <div class="uk-margin">
+                <label for="inputPassword" class="uk-form-label">Password</label>
+                <input type="password" name="_password" id="inputPassword" class="uk-input uk-width-1-2" placeholder="Password" required>
+            </div>
+            <div class="uk-margin">
+                <label>
+                    <input type="checkbox" name="_remember_me" class="uk-checkbox"> Remember me
+                </label>
+            </div>
+            <button class="uk-button uk-button-primary" type="submit">Login</button>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+        </form>
+
+
+{#         <form class="uk-form-stacked">
+            <div>
+                <label class="uk-form-label"></label>
+                <div class="uk-form-controls">...</div>
+            </div>
+            <div>
+                <div class="uk-form-label"></div>
+                <div class="uk-form-controls">...</div>
+            </div>
+        </form> #}
+    </div>
+</section>
+
+{% endblock %}

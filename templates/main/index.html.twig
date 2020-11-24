@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test Symfony{% endblock %}
+
+{% block body %}
+
+{# <div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/var/www/html/symfony/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/var/www/html/symfony/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
+    </ul>
+</div> #}
+
+
+<section>
+    <div class="uk-container uk-container-medium">
+        <h1 class="uk-h1">Titolo della pagina - {{ controller_name }}!</h1>
+        {% if app.user %}
+            <a href="{{path('logout')}}" class="uk-button uk-button-primary"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout</a>
+        {% else %}
+            <a href="{{path('login')}}" class="uk-button uk-button-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</a>
+        {% endif %}
+        <div class="uk-grid-medium uk-child-width-expand@s uk-margin-large-top" uk-grid>
+
+            <div class="uk-width-1-4@m uk-width-1-1@s">
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-card-title">Default</h3>
+                    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="/post/1/like" class="btn btn-link js-like">
+                            <span class="js-likes">2</span>&nbsp;
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="uk-width-1-4@m uk-width-1-1@s">
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-card-title">Default</h3>
+                    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="/post/1/like" class="btn btn-link js-like">
+                            <span class="js-likes">2</span>&nbsp;
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="uk-width-1-4@m uk-width-1-1@s">
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-card-title">Default</h3>
+                    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="/post/1/like" class="btn btn-link js-like">
+                            <span class="js-likes">2</span>&nbsp;
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
