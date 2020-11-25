@@ -23,39 +23,20 @@
         {% else %}
             <a href="{{path('login')}}" class="uk-button uk-button-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</a>
         {% endif %}
-        <div class="uk-grid-medium uk-child-width-expand@s uk-margin-large-top" uk-grid>
 
-            <div class="uk-width-1-4@m uk-width-1-1@s">
+        <div class="uk-grid-medium uk-child-width-expand@s uk-margin-large-top uk-grid-match" uk-grid>
+            {% for post in posts %}
+            <div class="uk-width-1-4@m uk-width-1-1@s ">
                 <div class="uk-card uk-card-default uk-card-body">
-                    <h3 class="uk-card-title">Default</h3>
-                    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <h3 class="uk-card-title">{{ post.title }}</h3>
+                    <p>{{ post.abstract }}</p>
                     <a href="/post/1/like" class="btn btn-link js-like">
                             <span class="js-likes">2</span>&nbsp;
                             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
-            <div class="uk-width-1-4@m uk-width-1-1@s">
-                <div class="uk-card uk-card-default uk-card-body">
-                    <h3 class="uk-card-title">Default</h3>
-                    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="/post/1/like" class="btn btn-link js-like">
-                            <span class="js-likes">2</span>&nbsp;
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="uk-width-1-4@m uk-width-1-1@s">
-                <div class="uk-card uk-card-default uk-card-body">
-                    <h3 class="uk-card-title">Default</h3>
-                    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="/post/1/like" class="btn btn-link js-like">
-                            <span class="js-likes">2</span>&nbsp;
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
     </div>
 </section>

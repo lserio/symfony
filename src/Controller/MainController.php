@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +17,13 @@ class MainController extends AbstractController
     public function index(Request $request): Response
     {
 
-        dump($request);
+        //dump($request);
+
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
 
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
+            'posts' => $posts
         ]);
 
 /*         return $this->json([
@@ -28,4 +32,5 @@ class MainController extends AbstractController
 
         /* return new Response('<h1>PROVA</h1>'); */
     }
+
 }
