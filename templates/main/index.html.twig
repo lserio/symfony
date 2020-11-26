@@ -4,17 +4,6 @@
 
 {% block body %}
 
-{# <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/symfony/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/symfony/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
-</div> #}
-
-
 <section>
     <div class="uk-container uk-container-medium">
         <h1 class="uk-h1">Titolo della pagina - {{ controller_name }}!</h1>
@@ -30,15 +19,35 @@
                 <div class="uk-card uk-card-default uk-card-body">
                     <h3 class="uk-card-title">{{ post.title }}</h3>
                     <p>{{ post.abstract }}</p>
-                    <a href="/post/1/like" class="btn btn-link js-like">
-                            <span class="js-likes">2</span>&nbsp;
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                    </a>
+                    
+                    <div class="like-{{post.id}}">
+                    {% if app.user and post in app.user.getLikes %}
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <a href="/post/{{post.id}}/unlike" class="toggle-likes">
+                        {% endif %} 
+                            <span class="number-of-likes-{{post.id}}">{{post.likes.count}}</span>&nbsp;
+                            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}    
+                        </a>     
+                        {% endif %} 
+                    {% else %}
+                        <a href="/post/{{post.id}}/like" class="toggle-likes">
+                            <span class="number-of-likes-{{post.id}}">{{post.likes.count}}</span>&nbsp;
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>   
+                        </a>   
+                    {% endif %}     
+                    </div> 
+                            
                 </div>
             </div>
             {% endfor %}
         </div>
+
     </div>
 </section>
 
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{asset('assets/js/like.js')}}"></script>
 {% endblock %}

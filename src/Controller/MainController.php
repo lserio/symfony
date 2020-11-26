@@ -35,8 +35,8 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/post/{post}/like", name="like_video", methods={"GET"})
-     * @Route("/post/{post}/unlike", name="undo_like_video", methods={"GET"})
+     * @Route("/post/{post}/like", name="like_video", methods={"POST"})
+     * @Route("/post/{post}/unlike", name="unlike_video", methods={"POST"})
      */
     public function toggleLikesAjax(Post $post, Request $request)
     {
@@ -56,7 +56,7 @@ class MainController extends AbstractController
 
             break;
 
-            case 'undo_like_video':
+            case 'unlike_video':
                 $user = $this->getDoctrine()->getRepository(User::class)->find($this->getUser());
                 $user->removeLike($post);
         
